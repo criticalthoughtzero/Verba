@@ -11,4 +11,4 @@ RUN mkdir -p /Verba && \
     find /Verba -type d -exec chmod 755 {} + || true && \
     chown -R nobody:nogroup /Verba
 USER nobody
-#CMD ["verba", "start","--port","8000","--host","0.0.0.0"]
+CMD ["verba", "start","--port","8000","--host","0.0.0.0"]
