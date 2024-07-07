@@ -18,12 +18,19 @@ services:
       - UNSTRUCTURED_API_KEY=$UNSTRUCTURED_API_KEY
       - UNSTRUCTURED_API_URL=$UNSTRUCTURED_API_URL
       - GITHUB_TOKEN=$GITHUB_TOKEN
+      # Add this line for Hugging Face cache:
+      - TRANSFORMERS_CACHE=/app/models
+      
       ## IF YOU WANT AUTHENTICATION, UNCOMENT BELLOW 
       ## AND ADD WEAVIATE SERVICE
       #- WEAVIATE_API_KEY_VERBA=adminkey
 
     volumes:
-      - ./data:/data/
+      - ${VERBA_DATA_DIR:-./data}:/app/data:rw
+      # Add these lines for persisting Hugging Face models and custom managers of models to download:
+      - ${VERBA_MODELS_DIR:-./models}:/app/models:rw
+      - ${CUSTOM_MANAGERS_PATH:-./custom_managers.py}:/Verba/goldenverba/components/managers.py
+      
     depends_on:
       weaviate:
         condition: service_healthy
@@ -47,7 +54,7 @@ services:
       - 8080:8080
       - 3000:8080
     volumes:
-      - weaviate_data:/var/lib/weaviate
+      - ${WEAVIATE_DATA_DIR:-./weaviate_data}:/var/lib/weaviate
     restart: on-failure:0
     healthcheck:
       test: wget --no-verbose --tries=3 --spider http://localhost:8080/v1/.well-known/ready || exit 1
