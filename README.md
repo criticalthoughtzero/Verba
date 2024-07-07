@@ -1,4 +1,8 @@
-# **NOTE** I forked this because there was no official Verba docker image and I wanted one in the Dockerhub Registry as I pull images on my Synology NAS via the Container app. This will automate so that an image will be created whenever there are changes to upstream from the Verba 'Main' repo. Check the .github folder to take a look at the github action file and please be sure to check out the amazing team at Weaviate and their products/projects: https://weaviate.io/ and the original upstream: https://github.com/weaviate/Verba
+# Note: Forked Optimized for Local LLMs and Hugging Face Integration Docker Image
+
+I forked this because there was no official Verba docker image and I wanted one in the Dockerhub Registry as I pull images on my Synology NAS via the Container app. This will automate so that an image will be created whenever there are changes to upstream from the Verba 'Main' repo. Check the .github folder to take a look at the github action file and please be sure to check out the amazing team at Weaviate and their products/projects: https://weaviate.io/ and the original upstream: https://github.com/weaviate/Verba
+
+This fork of the Verba project is tailored for users who prefer to work with local Language Models (LLMs) and is for automated builds with the huggingface modules setup in the image.
 
 # Verba
 
